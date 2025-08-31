@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Places comparator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/main.css">
@@ -14,21 +15,100 @@
 </head>
 <body>
   <div class="container mt-5">
+    <div class="row text-center my-5">
+      <h1>Welcome to country comparator!</h1>
+      <h3>Choose the countries to compare below</h3>
+    </div>
     <div class="row text-center">
       <div class="col-6"><input id="autocomplete-one"></div>
       <div class="col-6"><input id="autocomplete-two"></div>
     </div>
-    <div class="row my-5">
-      <button id="get-button" type="button" class="btn btn-primary">GET INFO</button>
-    </div>
-    <div class="row text-center mt-5">
-      <div class="col-6">
-        <div id="autocomplete-one_surface"></div>
+    <div class="compare-info">
+      <div class="row">
+        <div class="col-6 text-center mt-5"><img id="autocomplete-one_flag" class="country-flag"/></div>
+        <div class="col-6 text-center mt-5"><img id="autocomplete-two_flag" class="country-flag"/></div>
       </div>
-      <div class="col-6">
-        <div id="autocomplete-two_surface"></div>
+      <div class="row text-center mt-5 mb-3">
+        <h2>Metrics</h2>
       </div>
+      <div class="row text-center">
+        <table class="table table-hover table-striped">
+          <thead>
+        <tr>
+          <th scope="col" id="autocomplete-one_name"></th>
+          <th scope="col">Country name</th>
+          <th scope="col" id="autocomplete-two_name"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="autocomplete-one_surface"></td>
+          <th scope="row">Surface area [m2]</th>
+          <td id="autocomplete-two_surface"></td>
+        </tr>
+        <tr>
+          <td id="autocomplete-one_population"></td>
+          <th scope="row">Population</th>
+          <td id="autocomplete-two_population"></td>
+        </tr>
+        <tr>
+          <td id="autocomplete-one_population-density"></td>
+          <th scope="row">Population density</th>
+          <td id="autocomplete-two_population-density"></td>
+        </tr>
+        <tr>
+          <td id="autocomplete-one_life-expectancy"></td>
+          <th scope="row">Life expectancy</th>
+          <td id="autocomplete-two_life-expectancy"></td>
+        </tr>
+        <tr>
+          <td id="autocomplete-one_average-temperature"></td>
+          <th scope="row">Average temperature</th>
+          <td id="autocomplete-two_average-temperature"></td>
+        </tr>
+      </tbody>
+    </table>
+
+      <div class="row text-center mt-5 mb-3">
+        <h2>Other</h2>
+      </div>
+      <div class="row text-center">
+      <table class="table table-hover table-striped">
+        <tbody>
+          <tr>
+            <td id="autocomplete-one_government-type"></td>
+            <th scope="col">Government type</th>
+            <td id="autocomplete-two_government-type"></td>
+          </tr>
+          <tr>
+            <td id="autocomplete-one_religion"></td>
+            <th scope="row">Religion</th>
+            <td id="autocomplete-two_religion"></td>
+          </tr>
+          <tr>
+            <td id="autocomplete-one_driving-side"></td>
+            <th scope="row">Driving side</th>
+            <td id="autocomplete-two_driving-side"></td>
+          </tr>
+          <tr>
+            <td id="autocomplete-one_continent"></td>
+            <th scope="row">Continent</th>
+            <td id="autocomplete-two_continent"></td>
+          </tr>
+          <tr>
+            <td id="autocomplete-one_capital-city"></td>
+            <th scope="row">Capital city</th>
+            <td id="autocomplete-two_capital-city"></td>
+          </tr>
+          <tr>
+            <td id="autocomplete-one_currency"></td>
+            <th scope="row">Currency</th>
+            <td id="autocomplete-two_currency"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+</div>
 </body>
 </html>
