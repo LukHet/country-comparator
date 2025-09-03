@@ -6,6 +6,8 @@ $(function () {
   const secondSelectId = "autocomplete-two";
   const availableTags = [];
   const availableCountries = [];
+  const upIcon =
+    '<img src="icons/arrow.png" alt="Up" style="width:24px; height:24px; margin-left:5px;">';
   let firstSelected = false;
   let secondSelected = false;
 
@@ -27,6 +29,7 @@ $(function () {
           .then(() => {
             if (firstSelected && secondSelected) {
               $(".compare-info").slideToggle(600);
+              handleMetricsComparison();
             }
           });
       }
@@ -47,7 +50,9 @@ $(function () {
     });
 
     $(`#${id}_population-density`).text(() => {
-      return element.populationDensity ? `${element.populationDensity}` : "n/a";
+      return element.populationDensity
+        ? `${element.populationDensity.toFixed(2)}`
+        : "n/a";
     });
 
     $(`#${id}_life-expectancy`).text(() => {
@@ -85,6 +90,101 @@ $(function () {
     $(`#${id}_currency`).text(() => {
       return element.currencyName ? `${element.currencyName}` : "n/a";
     });
+  };
+
+  const handleAreaComparison = () => {
+    const firstCountrySurfaceArea = Number(
+      $(`#${firstSelectId}_surface`).text()
+    );
+    const secondCountrySurfaceArea = Number(
+      $(`#${secondSelectId}_surface`).text()
+    );
+
+    if (firstCountrySurfaceArea > secondCountrySurfaceArea) {
+      const currentText = $(`#${firstSelectId}_surface`).text();
+      $(`#${firstSelectId}_surface`).html(currentText + upIcon);
+    } else if (secondCountrySurfaceArea > firstCountrySurfaceArea) {
+      const currentText = $(`#${secondSelectId}_surface`).text();
+      $(`#${secondSelectId}_surface`).html(currentText + upIcon);
+    }
+  };
+
+  const handlePopulationComparison = () => {
+    const firstCountryPopulation = Number(
+      $(`#${firstSelectId}_population`).text()
+    );
+    const secondCountryPopulation = Number(
+      $(`#${secondSelectId}_population`).text()
+    );
+
+    if (firstCountryPopulation > secondCountryPopulation) {
+      const currentText = $(`#${firstSelectId}_population`).text();
+      $(`#${firstSelectId}_population`).html(currentText + upIcon);
+    } else if (secondCountryPopulation > firstCountryPopulation) {
+      const currentText = $(`#${secondSelectId}_population`).text();
+      $(`#${secondSelectId}_population`).html(currentText + upIcon);
+    }
+  };
+
+  const handlePopulationDensityComparison = () => {
+    const firstCountryPopulationDensity = Number(
+      $(`#${firstSelectId}_population-density`).text()
+    );
+    const secondCountryPopulationDensity = Number(
+      $(`#${secondSelectId}_population-density`).text()
+    );
+
+    if (firstCountryPopulationDensity > secondCountryPopulationDensity) {
+      const currentText = $(`#${firstSelectId}_population-density`).text();
+      $(`#${firstSelectId}_population-density`).html(currentText + upIcon);
+    } else if (secondCountryPopulationDensity > firstCountryPopulationDensity) {
+      const currentText = $(`#${secondSelectId}_population-density`).text();
+      $(`#${secondSelectId}_population-density`).html(currentText + upIcon);
+    }
+  };
+
+  const handleLifeExpectancyComparison = () => {
+    const firstCountryLifeExpectancy = Number(
+      $(`#${firstSelectId}_life-expectancy`).text()
+    );
+    const secondCountryLifeExpectancy = Number(
+      $(`#${secondSelectId}_life-expectancy`).text()
+    );
+
+    if (firstCountryLifeExpectancy > secondCountryLifeExpectancy) {
+      const currentText = $(`#${firstSelectId}_life-expectancy`).text();
+      $(`#${firstSelectId}_life-expectancy`).html(currentText + upIcon);
+    } else if (secondCountryLifeExpectancy > firstCountryLifeExpectancy) {
+      const currentText = $(`#${secondSelectId}_life-expectancy`).text();
+      $(`#${secondSelectId}_life-expectancy`).html(currentText + upIcon);
+    }
+  };
+
+  const handleAverageTemperatureComparison = () => {
+    const firstCountryAverageTemperature = Number(
+      $(`#${firstSelectId}_average-temperature`).text()
+    );
+    const secondCountryAverageTemperature = Number(
+      $(`#${secondSelectId}_average-temperature`).text()
+    );
+
+    if (firstCountryAverageTemperature > secondCountryAverageTemperature) {
+      const currentText = $(`#${firstSelectId}_average-temperature`).text();
+      $(`#${firstSelectId}_average-temperature`).html(currentText + upIcon);
+    } else if (
+      secondCountryAverageTemperature > firstCountryAverageTemperature
+    ) {
+      const currentText = $(`#${secondSelectId}_average-temperature`).text();
+      $(`#${secondSelectId}_average-temperature`).html(currentText + upIcon);
+    }
+  };
+
+  const handleMetricsComparison = () => {
+    handleAreaComparison();
+    handlePopulationComparison();
+    handlePopulationDensityComparison();
+    handleLifeExpectancyComparison();
+    handleAverageTemperatureComparison();
   };
 
   //initially hide table
